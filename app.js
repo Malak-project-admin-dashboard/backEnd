@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const drugRoutes = require('./routes/drug');
+const foodRoutes = require('./routes/food');
 const eventRoutes = require('./routes/event');
 const contactRoutes = require('./routes/contact');
 const confirmation = require('./routes/confirmation');
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 
 // Midlwares
 app.use(drugRoutes)
+app.use(foodRoutes)
 app.use(eventRoutes)
 app.use(contactRoutes)
 app.use(confirmation)

@@ -8,7 +8,11 @@ exports.addConfirmation = (req, res, next) => {
     foodName: data.foodName,
     foodDesc: data.foodDesc,
     foodUrl: data.foodUrl,
-    Acceptance: data.Acceptance,
+    name: data.name,
+    phone: data.phone,
+    quantity: data.quantity,
+    price: data.price,
+    Acceptance: false,
   });
 
   myConfirmation.save().catch((err) => console.log(err));
