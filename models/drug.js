@@ -15,6 +15,10 @@ const drugSchema = new Schema({
   drugUrl: {
     type: String,
     required: true
+  },
+  drugType: {
+    type: String,
+    required: true
   }
 });
 
