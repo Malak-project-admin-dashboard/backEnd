@@ -1,5 +1,9 @@
-const confirmation = require("../models/confirmation");
-const Confirmation = require("../models/confirmation");
+const Confirmation = require('../models/confirmation');
+
+
+// const User = require("C:\\Users\\user\\Desktop\\wheat-main\\BackEnd\\models\\user.js");
+
+
 
 exports.addConfirmation = (req, res, next) => {
   const data = req.body;
@@ -12,13 +16,34 @@ exports.addConfirmation = (req, res, next) => {
     phone: data.phone,
     quantity: data.quantity,
     price: data.price,
+   // idUser: user._id,
+  //  userId: req.user._id, // use the correct property for the user ID
+
     Acceptance: false,
   });
 
-  myConfirmation.save().catch((err) => console.log(err));
-  res.json("create a new conformation successfully");
+  myConfirmation.save()
+    .then(() => res.json('created a new confirmation successfully'))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
 };
 
+
+exports.getAllTrueConfirmationsCard = (req, res, next) => {
+  const userId = mongoose.Types.ObjectId(req.params.id); // convert the id to a mongoose ObjectId 
+
+  Confirmation.find({Acceptance: true})
+  .then((Confirmations) => {
+    console.log(Confirmations);
+    res.status(200).json(Confirmations);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+}
 
 
 
@@ -42,6 +67,9 @@ exports.getAllTrueConfirmations = (req, res, next) => {
       res.status(500).json({ error: err });
     });
 }
+
+
+
 
 
 exports.changeToTrue = (req, res, next) => {

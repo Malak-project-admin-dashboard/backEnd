@@ -8,6 +8,7 @@ const foodRoutes = require('./routes/food');
 const eventRoutes = require('./routes/event');
 const contactRoutes = require('./routes/contact');
 const confirmation = require('./routes/confirmation');
+const payment = require('./routes/Payment');
 
 
 
@@ -30,6 +31,7 @@ app.use(foodRoutes)
 app.use(eventRoutes)
 app.use(contactRoutes)
 app.use(confirmation)
+app.use(payment)
 
 
 app.use((error, req, res, next) => {

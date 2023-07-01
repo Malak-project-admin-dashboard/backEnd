@@ -1,11 +1,19 @@
-const mongoose = require("mongoose");
 
-// Get the Schema constructor
+const { mongoose } = require('mongoose');
+
 const Schema = mongoose.Schema;
+
+//console.log(User);
+// Get the Schema constructor
+
 
 const confirmation = new Schema({
   name: {
     type: String,
+    required: true
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true
   },
   phone: {
@@ -32,6 +40,7 @@ const confirmation = new Schema({
     type: String,
     required: true
   },
+
   Acceptance: {
     type: Boolean,
     required: false
