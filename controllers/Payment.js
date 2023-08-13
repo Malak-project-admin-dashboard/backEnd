@@ -10,12 +10,7 @@ exports.addPayment = (req, res, next) => {
     phoneNumber: data.phoneNumber,
 
     address: data.address,
-    paymentMethod: data.paymentMethod,
    
-    nameOfCard: data.nameOfCard,
-    cardNumber: data.cardNumber,
-    Date: data.Date,
-    Vcc: data.Vcc,
    });
  
    myInquiryPayment

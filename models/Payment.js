@@ -20,30 +20,8 @@ const PaymentSchema = new Schema({
     type: String,
     required: true
   },
-  paymentMethod:{
-    type: String,
-    required: true
+ 
 
-
-  },
-  nameOfCard: {
-    type: String,
-    required: true
-  },
-  cardNumber: {
-    type: String,
-    required: true
-  },
-  Date:{
-    type: String,
-    required: true
-
-
-  },
-  Vcc: {
-    type: String,
-    required: true
-  },
  
 });
 

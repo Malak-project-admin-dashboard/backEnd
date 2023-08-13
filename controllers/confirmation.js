@@ -17,7 +17,7 @@ exports.addConfirmation = (req, res, next) => {
     quantity: data.quantity,
     price: data.price,
    // idUser: user._id,
-  //  userId: req.user._id, // use the correct property for the user ID
+   userId: req.user._id, // use the correct property for the user ID
 
     Acceptance: false,
   });
@@ -32,9 +32,9 @@ exports.addConfirmation = (req, res, next) => {
 
 
 exports.getAllTrueConfirmationsCard = (req, res, next) => {
-  const userId = mongoose.Types.ObjectId(req.params.id); // convert the id to a mongoose ObjectId 
+  const userId =req.params.id; // convert the id to a mongoose ObjectId 
 
-  Confirmation.find({Acceptance: true})
+  Confirmation.find({ Acceptance: true, userId: { $in: userId }})
   .then((Confirmations) => {
     console.log(Confirmations);
     res.status(200).json(Confirmations);
