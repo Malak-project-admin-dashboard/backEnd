@@ -8,6 +8,7 @@ router.post("/adminConfirmation", adminControler.addConfirmation);
 router.get("/getAllFalseConfirmations", adminControler.getAllFalseConfirmations);
 router.get("/getAllTrueConfirmations", adminControler.getAllTrueConfirmations);
 router.get("/getAllTrueConfirmationsCard/:id", adminControler.getAllTrueConfirmationsCard);
+router.get("/getConfirmation/:id", adminControler.getConfirmation);
 router.delete("/deleteConfirmation/:id", adminControler.deleteConfirmation);
 router.post("/changeToTrue", adminControler.changeToTrue);
 module.exports = router;

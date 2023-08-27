@@ -1,10 +1,6 @@
 const Confirmation = require('../models/confirmation');
 
 
-// const User = require("C:\\Users\\user\\Desktop\\wheat-main\\BackEnd\\models\\user.js");
-
-
-
 exports.addConfirmation = (req, res, next) => {
   const data = req.body;
 
@@ -45,7 +41,21 @@ exports.getAllTrueConfirmationsCard = (req, res, next) => {
     });
 }
 
+exports.getConfirmation = (req, res, next) => {
+  const confirmationId = req.params.id;
 
+  Confirmation.findById(confirmationId)
+    .then((Confirmations) => {
+      if (!Confirmations) {
+        return res.status(404).json({ message: 'Confirmation not found' });
+      }
+      res.status(200).json(Confirmations);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
 
 exports.getAllFalseConfirmations = (req, res, next) => {
   Confirmation.find({Acceptance: false})

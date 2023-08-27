@@ -11,8 +11,8 @@ const confirmation = require('./routes/confirmation');
 const payment = require('./routes/Payment');
 
 
+app.use(bodyParser.json({ limit: '10mb' }));
 
-app.use(bodyParser.json());
 app.use(express.json());
 
 app.use((req, res, next) => {
