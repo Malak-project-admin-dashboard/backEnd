@@ -26,3 +26,32 @@ exports.getAllEvents = (req, res, next) => {
       res.status(500).json({ error: err });
     });
 };
+
+
+exports.getEvents = (req, res, next) => {
+  const EventsId = req.params.id;
+
+  Event.findById(EventsId)
+    .then((Event) => {
+      if (!Event) {
+        return res.status(404).json({ message: 'Event not found' });
+      }
+      res.status(200).json(Event);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
+
+exports.deleteEvent = (req, res, next) => {
+  const EventId = req.params.id;
+  Event.findByIdAndDelete({ _id: EventId })
+   .then(() => {
+    res.status(200).json({ message: "Event deleted successfully" });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ error: err });
+  });
+};

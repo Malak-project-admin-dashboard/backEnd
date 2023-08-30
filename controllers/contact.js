@@ -30,3 +30,14 @@ exports.addContact = (req, res, next) => {
       res.status(500).json({ error: err });
     });
  }
+ exports.deleteContact = (req, res, next) => {
+  const ContactId = req.params.id;
+  Contact.findByIdAndDelete({ _id: ContactId })
+   .then(() => {
+    res.status(200).json({ message: "Contact deleted successfully" });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ error: err });
+  });
+};

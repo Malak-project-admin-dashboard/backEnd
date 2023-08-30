@@ -16,10 +16,10 @@ const drugSchema = new Schema({
     type: String,
     required: true
   },
-  drugType: {
-    type: String,
-    required: true
-  }
+  // drugType: {
+  //   type: String,
+  //   required: true
+  // }
 });
 
 // Create model from the schema

@@ -12,9 +12,8 @@ exports.addConfirmation = (req, res, next) => {
     phone: data.phone,
     quantity: data.quantity,
     price: data.price,
-   // idUser: user._id,
-   userId: req.user._id, // use the correct property for the user ID
-
+    userId:data.userId, // use the correct property for the user ID
+  //  userId: req.user._id, 
     Acceptance: false,
   });
 
@@ -114,4 +113,29 @@ exports.deleteConfirmation = (req, res, next) => {
       console.log(err);
       res.status(500).json({ error: err });
     });
+};
+
+
+exports.updateRecipes = async (req, res) => {
+  try {
+    const RecipesId = req.params.id;
+    const updatedRecipesData = req.body;
+    const Recipe = await Confirmation.findByIdAndUpdate(
+      RecipesId,
+      updatedRecipesData,
+      { new: true }
+    );
+    const updatedRecipes = await Recipe.save();
+    res.json(updatedRecipes);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+exports.deleteRecipes = async (req, res) => {
+  const RecipeId = req.params.id;
+   await Confirmation.findByIdAndDelete(RecipeId);
+   res.status(204).json(Confirmation);
 };

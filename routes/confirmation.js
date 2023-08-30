@@ -11,4 +11,7 @@ router.get("/getAllTrueConfirmationsCard/:id", adminControler.getAllTrueConfirma
 router.get("/getConfirmation/:id", adminControler.getConfirmation);
 router.delete("/deleteConfirmation/:id", adminControler.deleteConfirmation);
 router.post("/changeToTrue", adminControler.changeToTrue);
+router.put("/Recipes/:id",adminControler.updateRecipes);
+router.delete("/deleteRecipes/:id", adminControler.deleteRecipes);
 module.exports = router;
+

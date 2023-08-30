@@ -33,3 +33,14 @@ exports.addPayment = (req, res, next) => {
       res.status(500).json({ error: err });
     });
  }
+ exports.deleteOrders = (req, res, next) => {
+  const OrdersId = req.params.id;
+  Payment.findByIdAndDelete({ _id: OrdersId })
+   .then(() => {
+    res.status(200).json({ message: "Orders deleted successfully" });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ error: err });
+  });
+};

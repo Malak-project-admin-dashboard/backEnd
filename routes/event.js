@@ -5,6 +5,7 @@ const adminControler = require("../controllers/event");
 
 
 router.post("/adminEvent", adminControler.addEvent);
-router.get('/getAllEvents',adminControler.getAllEvents)
-
+router.get('/getAllEvents',adminControler.getAllEvents); 
+router.get("/getEvents/:id", adminControler.getEvents);
+router.delete("/deleteEvent/:id", adminControler.deleteEvent);
 module.exports = router;

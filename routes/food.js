@@ -5,5 +5,7 @@ const adminControler = require("../controllers/food");
 
 
 router.post("/adminFood", adminControler.addFood);
-router.get('/getAllFoods',adminControler.getAllFoods)
+router.get('/getAllFoods',adminControler.getAllFoods);
+router.get("/getFood/:id", adminControler.getFood);
+router.delete("/deleteFood/:id", adminControler.deleteFood);
 module.exports = router;
